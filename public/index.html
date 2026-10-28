@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analizador de Reuniones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="contenedor">
+
+    <header class="encabezado">
+      <h1>Analizador de Reuniones</h1>
+
+      <p class="descripcion">
+        Analiza conversaciones comerciales con clientes para identificar
+        problemas, necesidades, preocupaciones, objeciones, valoraciones
+        y expectativas.
+      </p>
+    </header>
+
+    <!-- CARGA DE REUNIÓN -->
+
+    <section class="panel carga">
+
+      <label for="archivo">Archivo de transcripción</label>
+
+      <input
+        type="file"
+        id="archivo"
+        accept=".txt,.pdf,.docx,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      >
+      <p class="ayuda-carga">Formatos admitidos: TXT, PDF y Word (.docx). Máximo 12 MB.</p>
+
+      <button type="button" id="analizar">
+        Analizar reunión
+      </button>
+
+      <p id="estado" class="estado" role="status"></p>
+
+    </section>
+
+
+    <!-- HISTORIAL -->
+
+    <section class="historial panel">
+
+      <div class="historial-header">
+        <div>
+          <span class="etiqueta">HISTORIAL</span>
+          <h2>Análisis recientes</h2>
+        </div>
+      </div>
+
+      <div class="historial-controles">
+
+        <button
+          type="button"
+          id="seleccionar-todos"
+          class="boton-secundario"
+        >
+          Seleccionar todos
+        </button>
+
+        <button
+          type="button"
+          id="limpiar-seleccion"
+          class="boton-secundario"
+        >
+          Limpiar selección
+        </button>
+
+      </div>
+
+      <div id="lista-analisis" class="lista-analisis"></div>
+
+      <p id="historial-vacio" class="historial-vacio oculto">
+        Todavía no hay análisis guardados.
+      </p>
+
+      <div class="historial-acciones">
+
+        <span id="seleccionados" class="seleccionados">
+          0 análisis seleccionados
+        </span>
+
+        <div class="historial-botones">
+
+          <button
+            type="button"
+            id="analizar-patrones"
+            class="boton-patrones"
+            disabled
+          >
+            Analizar patrones
+          </button>
+
+          <button
+            type="button"
+            id="eliminar-seleccionados"
+            class="boton-eliminar"
+            disabled
+          >
+            Eliminar seleccionados
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ANÁLISIS GLOBAL -->
+
+    <section
+      id="patrones"
+      class="patrones panel oculto"
+    >
+
+      <div class="patrones-header">
+
+        <div>
+          <span class="etiqueta">ANÁLISIS GLOBAL</span>
+
+          <h2>
+            Inteligencia de reuniones
+          </h2>
+        </div>
+
+        <span
+          id="cantidad-reuniones-patrones"
+          class="id-analisis"
+        ></span>
+
+      </div>
+
+
+      <!-- RESUMEN GLOBAL -->
+
+      <div class="resumen">
+
+        <h3>Resumen general</h3>
+
+        <p id="resumen-patrones"></p>
+
+      </div>
+
+
+      <!-- CATEGORÍAS GLOBALES -->
+
+      <div class="categorias">
+
+
+        <!-- PROBLEMAS -->
+
+        <article class="categoria problema">
+
+          <div class="categoria-header">
+
+            <span class="icono">!</span>
+
+            <h3>
+              Problemas que se repiten
+            </h3>
+
+          </div>
+
+          <div
+            id="problemas-recurrentes"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- NECESIDADES -->
+
+        <article class="categoria necesidad">
+
+          <div class="categoria-header">
+
+            <span class="icono">+</span>
+
+            <h3>
+              Necesidades que se repiten
+            </h3>
+
+          </div>
+
+          <div
+            id="necesidades-recurrentes"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- OBJECIONES Y PREOCUPACIONES -->
+
+        <article class="categoria objecion">
+
+          <div class="categoria-header">
+
+            <span class="icono">×</span>
+
+            <h3>
+              Objeciones y preocupaciones
+            </h3>
+
+          </div>
+
+          <div
+            id="objeciones-preocupaciones-recurrentes"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- VALORACIONES -->
+
+        <article class="categoria valoracion">
+
+          <div class="categoria-header">
+
+            <span class="icono">✓</span>
+
+            <h3>
+              Qué valoran los clientes
+            </h3>
+
+          </div>
+
+          <div
+            id="valoraciones-recurrentes"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- DIFERENCIADORES -->
+
+        <article class="categoria diferenciador">
+
+          <div class="categoria-header">
+
+            <span class="icono">◆</span>
+
+            <h3>
+              Posibles diferenciadores percibidos
+            </h3>
+
+          </div>
+
+          <div
+            id="diferenciadores-percibidos"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- CONTENIDO -->
+
+        <article class="categoria contenido">
+
+          <div class="categoria-header">
+
+            <span class="icono">→</span>
+
+            <h3>
+              Oportunidades de contenido
+            </h3>
+
+          </div>
+
+          <div
+            id="oportunidades-contenido"
+            class="items"
+          ></div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESULTADO INDIVIDUAL -->
+
+    <section
+      id="resultado"
+      class="resultado oculto"
+    >
+
+      <div class="resultado-header">
+
+        <div>
+
+          <span class="etiqueta">
+            ANÁLISIS
+          </span>
+
+          <h2>
+            Resultado de la reunión
+          </h2>
+
+        </div>
+
+        <span
+          id="analisis-id"
+          class="id-analisis"
+        ></span>
+
+      </div>
+
+
+      <!-- RESUMEN -->
+
+      <section class="resumen">
+
+        <h3>Resumen</h3>
+
+        <p id="resumen"></p>
+
+      </section>
+
+      <section class="analisis-comercial" aria-labelledby="titulo-comercial">
+        <h3 id="titulo-comercial">Análisis comercial personalizado</h3>
+        <div class="campos-comerciales">
+          <article><h4>Cliente</h4><p id="cliente"></p></article>
+          <article><h4>Contacto y cargo</h4><p id="contacto-cargo"></p></article>
+          <article><h4>Necesidad principal</h4><p id="necesidad-principal"></p></article>
+          <article><h4>Dolor específico</h4><p id="dolor-especifico"></p></article>
+          <article><h4>Enfoque para captar su atención</h4><p id="enfoque-correo"></p></article>
+          <article class="asunto-comercial"><h4>Posibles asuntos para el correo</h4><ol id="asuntos-recomendados"></ol></article>
+        </div>
+      </section>
+
+      <section id="generador-campana" class="panel campana-panel">
+        <h3>Crear correo de seguimiento</h3>
+        <p class="ayuda-carga">Selecciona uno de los asuntos, genera una propuesta personalizada y revisa el contenido antes de enviarlo.</p>
+        <div class="campana-generar">
+          <label for="asunto-campana">Asunto para desarrollar</label>
+          <select id="asunto-campana"></select>
+          <button type="button" id="generar-campana">Generar correo y vista previa</button>
+        </div>
+        <p id="estado-campana" class="estado" role="status"></p>
+        <div id="editor-campana" class="editor-campana oculto">
+          <div class="campos-envio">
+            <label>Correo del destinatario<input id="correo-destinatario" type="email" autocomplete="email" placeholder="contacto@empresa.com"></label>
+            <label>Nombre del destinatario<input id="nombre-destinatario" type="text" autocomplete="name" placeholder="Nombre (opcional)"></label>
+            <label>Cuenta remitente autorizada<select id="cuenta-remitente"><option value="">Cargando cuentas…</option></select></label>
+            <label>Asunto final<input id="asunto-final" type="text" maxlength="250"></label>
+          </div>
+          <label for="html-campana">Contenido HTML editable</label>
+          <textarea id="html-campana" rows="14" spellcheck="false"></textarea>
+          <div class="campos-imagen-campana">
+            <label for="url-imagen-campana">URL HTTPS de imagen (opcional)<input id="url-imagen-campana" type="url" inputmode="url" placeholder="https://…"></label>
+            <label for="alt-imagen-campana">Texto alternativo<input id="alt-imagen-campana" type="text" placeholder="Descripción breve de la imagen"></label>
+          </div>
+          <p id="nota-imagen-campana" class="ayuda-carga">No se generó una imagen: la aplicación no tiene un servicio de imágenes conectado. Puedes añadir aquí una URL HTTPS pública; el HTML reserva un espacio visual para ella.</p>
+          <label for="texto-campana">Versión de texto plano</label>
+          <textarea id="texto-campana" rows="6"></textarea>
+          <div class="vista-previa-header"><h4>Vista previa</h4><button type="button" id="actualizar-previa" class="boton-secundario">Actualizar vista previa</button></div>
+          <iframe id="vista-previa-campana" title="Vista previa del correo" sandbox="" referrerpolicy="no-referrer"></iframe>
+          <p id="estado-envio" class="estado" role="status"></p>
+          <button type="button" id="enviar-campana" class="boton-envio" disabled aria-busy="false">
+            <span class="boton-envio__spinner" aria-hidden="true"></span>
+            <span data-label>Enviar correo</span>
+          </button>
+          <p id="nota-remitente" class="ayuda-carga"></p>
+        </div>
+      </section>
+
+
+      <!-- CATEGORÍAS INDIVIDUALES -->
+
+      <div class="categorias">
+
+
+        <!-- PROBLEMAS -->
+
+        <article class="categoria problema">
+
+          <div class="categoria-header">
+
+            <span class="icono">!</span>
+
+            <h3>Problemas</h3>
+
+          </div>
+
+          <div
+            id="problemas"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- NECESIDADES -->
+
+        <article class="categoria necesidad">
+
+          <div class="categoria-header">
+
+            <span class="icono">+</span>
+
+            <h3>Necesidades</h3>
+
+          </div>
+
+          <div
+            id="necesidades"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- MIEDOS -->
+
+        <article class="categoria miedo">
+
+          <div class="categoria-header">
+
+            <span class="icono">?</span>
+
+            <h3>Preocupaciones</h3>
+
+          </div>
+
+          <div
+            id="miedos"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- OBJECIONES -->
+
+        <article class="categoria objecion">
+
+          <div class="categoria-header">
+
+            <span class="icono">×</span>
+
+            <h3>Objeciones</h3>
+
+          </div>
+
+          <div
+            id="objeciones"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- VALORACIONES -->
+
+        <article class="categoria valoracion">
+
+          <div class="categoria-header">
+
+            <span class="icono">✓</span>
+
+            <h3>Valoraciones</h3>
+
+          </div>
+
+          <div
+            id="valoraciones"
+            class="items"
+          ></div>
+
+        </article>
+
+
+        <!-- EXPECTATIVAS -->
+
+        <article class="categoria expectativa">
+
+          <div class="categoria-header">
+
+            <span class="icono">→</span>
+
+            <h3>Expectativas</h3>
+
+          </div>
+
+          <div
+            id="expectativas"
+            class="items"
+          ></div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+{
+  "titulo": "Estadisticas de impacto comercial - Drakion Tech",
+  "idioma": "es",
+  "instrucciones": {
+    "objetivo": "Seleccionar una estadistica impactante y relevante para personalizar cada correo comercial.",
+    "reglas": [
+      "Utilizar preferiblemente una sola estadistica por correo.",
+      "Presentar el dato de forma directa, clara y natural.",
+      "No mencionar fuentes, organizaciones, publicaciones ni años en el correo.",
+      "Relacionar la estadistica con el problema del cliente y la solucion que ofrece Drakion Tech.",
+      "No afirmar que el cliente experimenta exactamente el mismo resultado.",
+      "No inventar cifras, porcentajes, comparaciones ni resultados.",
+      "No garantizar ahorros o beneficios que no hayan sido calculados.",
+      "Si ninguna estadistica es relevante para el cliente, no forzar su inclusion."
+    ]
+  },
+  "estadisticas": [
+    {
+      "id": "1.1",
+      "servicio": ["desarrollo_software"],
+      "temas": ["procesos_manuales", "coordinacion", "productividad"],
+      "titulo": "Tiempo perdido en tareas de coordinacion",
+      "dato": "El 58 % de la jornada laboral se dedica a coordinar tareas, buscar informacion, cambiar entre aplicaciones y perseguir actualizaciones. Solo el 33 % se dedica al trabajo especializado y menos del 10 % a estrategia."
+    },
+    {
+      "id": "1.2",
+      "servicio": ["desarrollo_software", "soluciones_low_cost"],
+      "temas": ["trabajo_duplicado", "tiempo", "costos"],
+      "titulo": "Horas perdidas por empleado",
+      "dato": "Una persona puede dedicar al año 103 horas a reuniones innecesarias, 209 horas a trabajo duplicado y 352 horas a hablar sobre el trabajo."
+    },
+    {
+      "id": "1.3",
+      "servicio": ["desarrollo_software", "soluciones_low_cost"],
+      "temas": ["automatizacion", "procesos", "productividad"],
+      "titulo": "Potencial de automatizacion",
+      "dato": "El 45 % de las actividades laborales tiene potencial tecnico de automatizacion con tecnologia disponible. Cerca del 60 % de las ocupaciones tiene al menos un 30 % de actividades automatizables."
+    },
+    {
+      "id": "1.4",
+      "servicio": ["desarrollo_software", "ia_ciencia_datos"],
+      "temas": ["procesamiento_datos", "digitacion", "reportes", "excel"],
+      "titulo": "Procesamiento de datos automatizable",
+      "dato": "Casi 7 de cada 10 actividades de procesamiento de datos y 64 de cada 100 actividades de recoleccion de datos tienen potencial tecnico de automatizacion."
+    },
+    {
+      "id": "1.5",
+      "servicio": ["desarrollo_software"],
+      "temas": ["manufactura", "retail", "contabilidad", "restaurantes"],
+      "titulo": "Automatizacion segun el sector",
+      "dato": "El potencial tecnico de automatizacion alcanza el 59 % de las actividades en manufactura, el 73 % en alojamiento y servicios de comida, hasta el 86 % de ciertas tareas contables en comercio y el 47 % de las actividades de vendedores minoristas."
+    },
+    {
+      "id": "2.1",
+      "servicio": ["staff_augmentation"],
+      "temas": ["talento_ti", "contratacion", "retrasos_proyectos"],
+      "titulo": "Escasez de talento tecnologico",
+      "dato": "Se proyecto que mas del 90 % de las organizaciones del mundo sentiria el impacto de la escasez de habilidades tecnologicas, con perdidas potenciales de hasta US$5,5 billones."
+    },
+    {
+      "id": "2.2",
+      "servicio": ["staff_augmentation"],
+      "temas": ["talento_ti", "retrasos", "calidad"],
+      "titulo": "Proyectos afectados por falta de talento",
+      "dato": "El 54 % de las organizaciones reporto retrasos en el desarrollo de productos por falta de habilidades y el 58 % reporto problemas de calidad. En Norteamerica, el 87 % de los lideres reporto retrasos en su transformacion digital."
+    },
+    {
+      "id": "3.1",
+      "servicio": ["soluciones_low_cost"],
+      "temas": ["trabajo_duplicado", "costos", "productividad"],
+      "titulo": "Costo oculto del trabajo duplicado",
+      "dato": "209 horas al año por persona pueden destinarse a trabajo duplicado, tiempo que representa capacidad operativa que podria aprovecharse mejor."
+    },
+    {
+      "id": "3.2",
+      "servicio": ["soluciones_low_cost", "ia_ciencia_datos"],
+      "temas": ["calidad_datos", "datos_desordenados", "costos"],
+      "titulo": "Costo de la mala calidad de datos",
+      "dato": "La mala calidad de datos se ha estimado en un costo promedio de US$12,9 millones anuales por organizacion."
+    },
+    {
+      "id": "3.3",
+      "servicio": ["soluciones_low_cost", "soporte_24_7"],
+      "temas": ["caidas", "continuidad_operativa", "pymes"],
+      "titulo": "Costo de las interrupciones",
+      "dato": "El 57 % de las pequeñas empresas de entre 20 y 100 empleados reporto que una hora de caida podia costar hasta US$100.000."
+    },
+    {
+      "id": "4.1",
+      "servicio": ["ia_ciencia_datos", "apropiacion_digital"],
+      "temas": ["adopcion_ia", "transformacion_digital", "competitividad"],
+      "titulo": "Adopcion de inteligencia artificial",
+      "dato": "El 88 % de las organizaciones utiliza inteligencia artificial regularmente en al menos una funcion del negocio, frente al 78 % del periodo anterior y el 20 % registrado en 2017."
+    },
+    {
+      "id": "4.2",
+      "servicio": ["ia_ciencia_datos"],
+      "temas": ["calidad_datos", "gobernanza_datos", "analitica"],
+      "titulo": "Datos de baja calidad",
+      "dato": "La mala calidad de datos puede representar un costo promedio de US$12,9 millones anuales por organizacion. Ademas, el 59 % de las organizaciones no mide la calidad de sus datos."
+    },
+    {
+      "id": "4.3",
+      "servicio": ["ia_ciencia_datos"],
+      "temas": ["calidad_datos", "analitica", "costos"],
+      "titulo": "Perdidas asociadas a datos deficientes",
+      "dato": "Mas del 25 % de los profesionales de datos y analitica estima perdidas superiores a US$5 millones anuales por mala calidad de datos, y el 7 % reporta perdidas de US$25 millones o mas."
+    },
+    {
+      "id": "4.4",
+      "servicio": ["ia_ciencia_datos", "soporte_24_7"],
+      "temas": ["ciberseguridad", "automatizacion_seguridad", "brechas_datos"],
+      "titulo": "IA aplicada a la seguridad",
+      "dato": "Las organizaciones que utilizan ampliamente IA y automatizacion en seguridad registraron un ahorro promedio de US$1,9 millones por brecha de datos y redujeron su ciclo de gestion de brechas en aproximadamente 80 dias."
+    },
+    {
+      "id": "4.5",
+      "servicio": ["ia_ciencia_datos", "apropiacion_digital"],
+      "temas": ["adopcion_ia", "retorno_inversion", "resultados"],
+      "titulo": "Adoptar IA no garantiza resultados",
+      "dato": "Aunque el 88 % de las organizaciones utiliza IA, solo el 39 % reporta algun impacto en las utilidades a nivel empresarial y cerca del 6 % se considera de alto desempeño."
+    },
+    {
+      "id": "5.1",
+      "servicio": ["apropiacion_digital"],
+      "temas": ["adopcion_software", "aplicaciones", "productividad"],
+      "titulo": "Exceso de herramientas digitales",
+      "dato": "El trabajador promedio utiliza 10 aplicaciones al dia. El 42 % afirma dedicar mas tiempo al correo electronico y el 40 % a las videollamadas que el año anterior."
+    },
+    {
+      "id": "5.2",
+      "servicio": ["apropiacion_digital", "ia_ciencia_datos"],
+      "temas": ["pilotos_ia", "escalamiento", "adopcion"],
+      "titulo": "El reto de llevar la IA a la operacion",
+      "dato": "Aunque el 88 % de las organizaciones utiliza IA, la mayoria continua en etapas de experimentacion o prueba y ninguna funcion supera el 10 % de adopcion de agentes de IA a escala."
+    },
+    {
+      "id": "5.3",
+      "servicio": ["apropiacion_digital", "ia_ciencia_datos"],
+      "temas": ["gobernanza_ia", "seguridad", "uso_no_autorizado"],
+      "titulo": "Riesgos del uso de IA sin controles",
+      "dato": "El 63 % de las organizaciones carece de politicas de gobierno de IA para gestionar o evitar el uso no autorizado. Las brechas relacionadas con IA no autorizada registraron un costo de US$4,63 millones."
+    },
+    {
+      "id": "5.4",
+      "servicio": ["apropiacion_digital", "desarrollo_software"],
+      "temas": ["coordinacion", "liderazgo", "productividad"],
+      "titulo": "Tiempo de gerencia dedicado a coordinar",
+      "dato": "Los gerentes dedican el 62 % de su tiempo a coordinacion y tareas relacionadas con el trabajo; en la alta direccion, la cifra es del 60 %."
+    },
+    {
+      "id": "6.1",
+      "servicio": ["soporte_24_7"],
+      "temas": ["caidas", "continuidad_operativa", "disponibilidad"],
+      "titulo": "Costo de una hora de caida",
+      "dato": "Mas del 90 % de las empresas medianas y grandes estima que una hora de caida cuesta mas de US$300.000. El 41 % reporta costos de entre US$1 millon y mas de US$5 millones por hora."
+    },
+    {
+      "id": "6.2",
+      "servicio": ["soporte_24_7"],
+      "temas": ["caidas", "costos", "disponibilidad"],
+      "titulo": "Costo por minuto de interrupcion",
+      "dato": "Una interrupcion que cuesta US$300.000 por hora equivale aproximadamente a US$5.000 por minuto. Si cuesta US$1 millon por hora, equivale a unos US$16.700 por minuto."
+    },
+    {
+      "id": "6.3",
+      "servicio": ["soporte_24_7"],
+      "temas": ["caidas", "continuidad_operativa", "riesgo"],
+      "titulo": "Impacto economico de interrupciones",
+      "dato": "El 54 % de las interrupciones significativas analizadas tuvo un costo superior a US$100.000."
+    },
+    {
+      "id": "6.4",
+      "servicio": ["soporte_24_7"],
+      "temas": ["continuidad_operativa", "costos", "gestion_riesgo"],
+      "titulo": "Empresas que desconocen el costo de una caida",
+      "dato": "Aproximadamente 6 de cada 10 empresas no pueden calcular cuanto les cuesta una hora de interrupcion."
+    },
+    {
+      "id": "6.5",
+      "servicio": ["soporte_24_7", "ia_ciencia_datos"],
+      "temas": ["ciberseguridad", "brechas_datos", "respuesta_incidentes"],
+      "titulo": "Costo de una brecha de datos",
+      "dato": "El costo promedio global de una brecha de datos se estima en US$4,44 millones. En Estados Unidos alcanza US$10,22 millones. Las brechas que tardan mas de 200 dias en resolverse tienen un costo promedio de US$5,01 millones, frente a US$3,87 millones para las resueltas mas rapido."
+    }
+  ]
+}
