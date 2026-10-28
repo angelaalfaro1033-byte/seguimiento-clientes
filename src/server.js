@@ -69,16 +69,26 @@ app.get('/oauth2callback', async (req, res) => {
 
 app.get('/api/mail/config', async (req, res) => {
   const setup = getOAuthSetupStatus();
+  const enRender = Boolean(process.env.RENDER_EXTERNAL_URL || process.env.RENDER);
   if (!setup.ready) {
     const needsClient = setup.missing.includes('GOOGLE_OAUTH_CLIENT_ID') || setup.missing.includes('GOOGLE_OAUTH_CLIENT_SECRET');
+    const faltaRefreshToken = setup.missing.includes('GMAIL_REFRESH_TOKEN');
     return res.json({
       configured: false,
       senders: [],
       message: needsClient
-        ? 'Faltan las credenciales OAuth de Google en .env.'
+        ? enRender
+          ? 'Faltan GOOGLE_OAUTH_CLIENT_ID o GOOGLE_OAUTH_CLIENT_SECRET en las variables de entorno de Render.'
+          : 'Faltan las credenciales OAuth de Google en .env.'
         : setup.missing.includes('GMAIL_SENDER_EMAIL=contacto@drakiontech.com')
-          ? 'Configura GMAIL_SENDER_EMAIL=contacto@drakiontech.com en .env.'
-          : 'Autoriza contacto@drakiontech.com desde http://localhost:3000/auth/google para habilitar el envío.'
+          ? enRender
+            ? 'Configura GMAIL_SENDER_EMAIL=contacto@drakiontech.com en las variables de entorno de Render.'
+            : 'Configura GMAIL_SENDER_EMAIL=contacto@drakiontech.com en .env.'
+          : faltaRefreshToken && enRender
+            ? 'Falta GMAIL_REFRESH_TOKEN en las variables de entorno de Render. Autoriza contacto@drakiontech.com localmente, copia el refresh token a Render y reinicia el servicio.'
+            : faltaRefreshToken
+              ? 'Falta GMAIL_REFRESH_TOKEN. Autoriza contacto@drakiontech.com desde http://localhost:3000/auth/google para habilitar el envío.'
+              : 'Revisa las variables de entorno de Gmail.'
     });
   }
   try {
@@ -87,12 +97,20 @@ app.get('/api/mail/config', async (req, res) => {
     const status = error.response?.status || error.code || error.name || 'error';
     console.error('OAuth Gmail: no se pudo renovar el acceso; código:', status);
     const connectionError = ['EACCES', 'ENOTFOUND', 'ETIMEDOUT', 'ECONNRESET', 'ECONNREFUSED'].includes(error.code);
+    const invalidGrant = error.response?.data?.error === 'invalid_grant';
+    const invalidClient = error.response?.data?.error === 'invalid_client';
     return res.json({
       configured: false,
       senders: [],
       message: connectionError
         ? 'No se pudo conectar con Google para validar Gmail. Revisa la conexión a Internet e inténtalo de nuevo.'
-        : 'No se pudo validar la autorización de Gmail. Vuelve a autorizar la cuenta desde http://localhost:3000/auth/google.'
+        : invalidGrant && enRender
+          ? 'Google rechazó el refresh token configurado en Render. Genera uno nuevo localmente, actualiza GMAIL_REFRESH_TOKEN en Environment y reinicia el servicio. Si vuelve a vencer, revisa que el consentimiento OAuth no siga en modo Testing.'
+          : invalidClient && enRender
+            ? 'Google rechazó las credenciales OAuth configuradas en Render. Revisa GOOGLE_OAUTH_CLIENT_ID y GOOGLE_OAUTH_CLIENT_SECRET.'
+            : enRender
+              ? 'No se pudo validar Gmail con las variables configuradas en Render. Revisa GOOGLE_OAUTH_CLIENT_ID, GOOGLE_OAUTH_CLIENT_SECRET y GMAIL_REFRESH_TOKEN.'
+              : 'No se pudo validar la autorización de Gmail. Vuelve a autorizar la cuenta desde http://localhost:3000/auth/google.'
     });
   }
   res.json({ configured: true, senders: [SENDER_EMAIL], message: 'Cuenta Gmail autorizada para el envío.' });
