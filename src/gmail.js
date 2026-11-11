@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const fs = require('fs/promises');
+const fsSync = require('fs');
 const path = require('path');
 const { google } = require('googleapis');
 
@@ -145,26 +146,40 @@ function encodeMimeBody(value = '') {
 }
 
 function crearMensajeRaw({ to, subject, html, text }) {
-  const boundary = `gmail-alt-${crypto.randomBytes(18).toString('hex')}`;
+  const relatedBoundary = `gmail-rel-${crypto.randomBytes(18).toString('hex')}`;
+  const alternativeBoundary = `gmail-alt-${crypto.randomBytes(18).toString('hex')}`;
+  const logoPath = path.join(__dirname, '..', 'public', 'images', 'logodrajion.png');
+  const logo = fsSync.readFileSync(logoPath).toString('base64');
   const headers = [
     `From: Drakion Tech <${SENDER_EMAIL}>`,
     `To: ${to}`,
     `Subject: ${encodeHeader(subject)}`,
     'MIME-Version: 1.0',
-    `Content-Type: multipart/alternative; boundary="${boundary}"`
+    `Content-Type: multipart/related; boundary="${relatedBoundary}"`
   ];
   const parts = [
-    `--${boundary}`,
+    `--${relatedBoundary}`,
+    `Content-Type: multipart/alternative; boundary="${alternativeBoundary}"`,
+    '',
+    `--${alternativeBoundary}`,
     'Content-Type: text/plain; charset="UTF-8"',
     'Content-Transfer-Encoding: base64',
     '',
     encodeMimeBody(text),
-    `--${boundary}`,
+    `--${alternativeBoundary}`,
     'Content-Type: text/html; charset="UTF-8"',
     'Content-Transfer-Encoding: base64',
     '',
     encodeMimeBody(html),
-    `--${boundary}--`
+    `--${alternativeBoundary}--`,
+    `--${relatedBoundary}`,
+    'Content-Type: image/png; name="logodrajion.png"',
+    'Content-Transfer-Encoding: base64',
+    'Content-ID: <drakion-logo>',
+    'Content-Disposition: inline; filename="logodrajion.png"',
+    '',
+    logo,
+    `--${relatedBoundary}--`
   ];
   return Buffer.from(`${headers.join('\r\n')}\r\n\r\n${parts.join('\r\n')}`, 'utf8').toString('base64url');
 }

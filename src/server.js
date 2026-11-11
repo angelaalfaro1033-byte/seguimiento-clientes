@@ -149,7 +149,8 @@ app.post('/api/mail/send', async (req, res) => {
   const imageTags = html.match(/<img\b[^>]*>/gi) || [];
   for (const imageTag of imageTags) {
     const src = imageTag.match(/\bsrc=["']([^"']+)["']/i)?.[1];
-    if (!src || !/^https:\/\//i.test(src) || !/\balt=["'][^"']*["']/i.test(imageTag)) {
+    const esLogoAdjunto = src === 'cid:drakion-logo';
+    if (!src || (!esLogoAdjunto && !/^https:\/\//i.test(src)) || !/\balt=["'][^"']*["']/i.test(imageTag)) {
       return res.status(400).json({ error: 'Cada imagen debe usar una URL HTTPS accesible y tener texto alternativo.' });
     }
   }

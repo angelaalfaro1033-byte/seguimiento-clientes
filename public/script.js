@@ -8,6 +8,7 @@ const botonGenerarCampana = document.getElementById('generar-campana');
 const editorCampana = document.getElementById('editor-campana');
 const iframeCampana = document.getElementById('vista-previa-campana');
 const botonEnviarCampana = document.getElementById('enviar-campana');
+const WHATSAPP_URL_CAMPANA = 'https://api.whatsapp.com/send/?phone=573219241873&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios&type=phone_number&app_absent=0';
 const etiquetaBotonEnvio = botonEnviarCampana.querySelector('[data-label]');
 const selectorRemitente = document.getElementById('cuenta-remitente');
 let configuracionCorreoDisponible = false;
@@ -263,29 +264,68 @@ function escaparAtributoHTML(texto) {
 
 function actualizarVistaPreviaCampana() {
   let html = document.getElementById('html-campana').value;
-  const imageUrl = document.getElementById('url-imagen-campana').value.trim();
-  const imageAlt = document.getElementById('alt-imagen-campana').value.trim() || 'Imagen relacionada con el tema del correo';
-  let elementosPosterioresAlTitular = '';
-  if (imageUrl) {
-    try {
-      if (new URL(imageUrl).protocol !== 'https:') throw new Error('La imagen debe usar una URL HTTPS pública.');
-      elementosPosterioresAlTitular += '<p style="margin:20px 0 0"><img src="' + escaparAtributoHTML(imageUrl) + '" width="576" alt="' + escaparAtributoHTML(imageAlt) + '" style="display:block;width:100%;max-width:576px;height:auto;border:0;border-radius:8px"></p>';
-      document.getElementById('nota-imagen-campana').textContent = 'La vista previa utiliza la URL HTTPS indicada; confirma que sea accesible para los destinatarios.';
-    } catch (error) {
-      document.getElementById('nota-imagen-campana').textContent = error.message;
-    }
-  } else {
-    document.getElementById('nota-imagen-campana').textContent = 'No se generó una imagen: puedes añadir una URL HTTPS pública opcional, que aparecerá debajo del titular.';
-  }
   const nombre = document.getElementById('nombre-destinatario').value.trim();
-  if (nombre) {
-    const saludo = '<p style="margin:0 0 18px;font-size:16px">Hola ' + escaparAtributoHTML(nombre) + ',</p>';
-    elementosPosterioresAlTitular = saludo + elementosPosterioresAlTitular;
-  }
-  html = html.replace('</h1>', '</h1>' + elementosPosterioresAlTitular);
-  iframeCampana.srcdoc = html;
+  const saludo = nombre
+    ? '<tr><td style="padding:22px 40px 0;color:#071947;font:16px/1.5 Arial,Helvetica,sans-serif">Hola ' + escaparAtributoHTML(nombre) + ',</td></tr>'
+    : '';
+  html = html.replace('<!-- DT_GREETING_SLOT -->', saludo);
+  html = html.replace('<!-- DT_IMAGE_SLOT -->', '');
+  const htmlVistaPrevia = html.replaceAll('cid:drakion-logo', '/images/logodrajion.png');
+  iframeCampana.srcdoc = htmlVistaPrevia;
   return html;
 }
+
+function crearHTMLDesdeTextoPlano(texto) {
+  const lineas = String(texto || '').split(/\r?\n/)
+    .filter((linea) => linea.trim() && !linea.includes(WHATSAPP_URL_CAMPANA));
+  const parrafos = lineas.map((linea, indice) => {
+    const textoLinea = linea.trim();
+    if (/^\**\s*consultar fuente\b/i.test(textoLinea)) {
+      const urlsFuente = textoLinea.match(/https?:\/\/[^\s)\]]+/gi) || [];
+      const urlFuente = (urlsFuente.at(-1) || '').replace(/[.,]+$/, '');
+      if (urlFuente) {
+        return '<p style="margin:0 0 24px;text-align:center"><a href="' + escaparAtributoHTML(urlFuente) + '" target="_blank" rel="noopener" style="color:#2A3EF4;font:700 13px/1.5 Arial,Helvetica,sans-serif;text-decoration:underline">Consultar fuente ↗</a></p>';
+      }
+    }
+    const partes = textoLinea.split(/(\[[^\]]+\]\(https?:\/\/[^)]+\)|https?:\/\/[^\s<]+)/gi);
+    const conEnlaces = partes.map((parte) => {
+      const enlaceMarkdown = parte.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/i);
+      if (enlaceMarkdown) {
+        return '<a href="' + escaparAtributoHTML(enlaceMarkdown[2]) + '" target="_blank" rel="noopener" style="color:#2A3EF4;text-decoration:underline">' + escaparAtributoHTML(enlaceMarkdown[1].replace(/\*\*/g, '')) + '</a>';
+      }
+      if (/^https?:\/\//i.test(parte)) {
+        const url = parte.replace(/[.,;!?]+$/, '');
+        const puntuacion = parte.slice(url.length);
+        return '<a href="' + escaparAtributoHTML(url) + '" target="_blank" rel="noopener" style="color:#2A3EF4;text-decoration:underline">Abrir enlace ↗</a>' + escaparAtributoHTML(puntuacion);
+      }
+      return escaparAtributoHTML(parte.replace(/\*\*/g, ''));
+    }).join('');
+    if (indice === 0) {
+      return '<h1 class="dt-title" style="margin:0 0 18px;color:#071947;font:700 30px/1.2 Arial,Helvetica,sans-serif;letter-spacing:-0.5px;text-align:center">' + conEnlaces + '</h1><table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:0 auto 26px"><tr><td width="34" height="4" bgcolor="#2A3EF4" style="width:34px;height:4px;background:#2A3EF4;font-size:0;line-height:0">&nbsp;</td><td width="9" style="width:9px;font-size:0;line-height:0">&nbsp;</td><td width="14" height="4" bgcolor="#FF004F" style="width:14px;height:4px;background:#FF004F;font-size:0;line-height:0">&nbsp;</td></tr></table>';
+    }
+    const esCierre = indice === lineas.length - 1 && /\?\s*$/.test(textoLinea);
+    const estilo = esCierre
+      ? 'margin:8px 0 22px;color:#071947;font:600 16px/1.55 Arial,Helvetica,sans-serif;text-align:center'
+      : 'margin:0 0 16px;color:#071947;font:16px/1.65 Arial,Helvetica,sans-serif;text-align:center';
+    return '<p style="' + estilo + '">' + conEnlaces + '</p>';
+  }).join('');
+
+  return '<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title>Correo Drakiontech</title><style>@media screen and (max-width:600px){.dt-card{width:100%!important;border-radius:0!important}.dt-pad{padding-left:22px!important;padding-right:22px!important}.dt-title{font-size:27px!important;line-height:1.18!important}}</style></head><body style="margin:0;padding:24px 8px;background:#071947;font-family:Arial,Helvetica,sans-serif;color:#071947"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#071947" style="width:100%;background:#071947"><tr><td align="center"><table class="dt-card" role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" bgcolor="#E4E5F2" style="width:100%;max-width:600px;background:#E4E5F2;border-radius:18px;overflow:hidden"><tr><td align="center" bgcolor="#071947" style="padding:16px 24px;background:#071947;border-bottom:3px solid #FF004F"><img class="dt-logo" src="cid:drakion-logo" width="174" alt="Drakiontech" style="display:block;width:174px;max-width:100%;height:auto;margin:0 auto;border:0"></td></tr><!-- DT_GREETING_SLOT --><tr><td class="dt-pad" style="padding:30px 48px 12px">' + parrafos + '</td></tr><tr><td class="dt-pad" align="center" style="padding:12px 40px 28px"><table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:0 auto"><tr><td align="center" bgcolor="#2A3EF4" style="border:1px solid #2A3EF4;border-radius:8px"><a href="' + WHATSAPP_URL_CAMPANA + '" target="_blank" rel="noopener" style="display:inline-block;padding:15px 28px;background:#2A3EF4;border:1px solid #2A3EF4;border-radius:8px;color:#E4E5F2;text-decoration:none;font:700 15px/1.3 Arial,Helvetica,sans-serif">Escríbeme por WhatsApp &nbsp;→</a></td></tr></table></td></tr><tr><td bgcolor="#071947" style="padding:18px 24px;background:#071947;border-top:3px solid #FF004F;color:#E4E5F2;font:10px/1.5 Arial,Helvetica,sans-serif;letter-spacing:1px">TECNOLOGÍA CON PROPÓSITO</td></tr></table></td></tr></table></body></html>';
+}
+
+document.getElementById('actualizar-desde-texto').addEventListener('click', () => {
+  const texto = document.getElementById('texto-campana').value;
+  if (!texto.trim()) {
+    estadoCampana.textContent = 'Escribe el contenido de texto plano antes de actualizar el correo.';
+    return;
+  }
+  if (!texto.includes(WHATSAPP_URL_CAMPANA)) {
+    document.getElementById('texto-campana').value = texto.trim() + '\n\nContactar por WhatsApp: ' + WHATSAPP_URL_CAMPANA;
+  }
+  document.getElementById('html-campana').value = crearHTMLDesdeTextoPlano(document.getElementById('texto-campana').value);
+  actualizarVistaPreviaCampana();
+  estadoCampana.textContent = 'Correo actualizado con el texto plano. El contenido actualizado se usará al enviarlo.';
+});
 
 async function cargarConfiguracionCorreo() {
   try {
@@ -1363,8 +1403,6 @@ botonGenerarCampana.addEventListener('click', async () => {
     document.getElementById('asunto-final').value = asunto;
     document.getElementById('html-campana').value = data.campana.html;
     document.getElementById('texto-campana').value = data.campana.text;
-    document.getElementById('alt-imagen-campana').value = data.campana.alt_imagen || '';
-    document.getElementById('nota-imagen-campana').textContent = `Dirección visual sugerida: ${data.campana.concepto_visual}. La aplicación no tiene generación o alojamiento de imágenes conectado; añade una URL HTTPS real si quieres incluir una.`;
     editorCampana.classList.remove('oculto');
     estadoCampana.textContent = [
       'Propuesta generada. Edita y revisa el mensaje antes del envío.',
@@ -1380,9 +1418,8 @@ botonGenerarCampana.addEventListener('click', async () => {
 });
 
 document.getElementById('actualizar-previa').addEventListener('click', actualizarVistaPreviaCampana);
+document.getElementById('html-campana').addEventListener('input', actualizarVistaPreviaCampana);
 document.getElementById('nombre-destinatario').addEventListener('input', actualizarVistaPreviaCampana);
-document.getElementById('url-imagen-campana').addEventListener('input', actualizarVistaPreviaCampana);
-document.getElementById('alt-imagen-campana').addEventListener('input', actualizarVistaPreviaCampana);
 selectorRemitente.addEventListener('change', actualizarDisponibilidadEnvio);
 
 botonEnviarCampana.addEventListener('click', async () => {
@@ -1391,7 +1428,6 @@ botonEnviarCampana.addEventListener('click', async () => {
   const from = selectorRemitente.value;
   const subject = document.getElementById('asunto-final').value.trim();
   const html = document.getElementById('html-campana').value;
-  const imageUrl = document.getElementById('url-imagen-campana').value.trim();
   const bodyText = document.getElementById('texto-campana').value;
   const text = bodyText;
   const campoDestinatario = document.getElementById('correo-destinatario');
@@ -1408,16 +1444,6 @@ botonEnviarCampana.addEventListener('click', async () => {
     estadoEnvio.classList.add('error');
     estadoEnvio.textContent = 'Completa remitente, asunto y contenido antes de enviar.';
     return;
-  }
-  if (imageUrl) {
-    try {
-      if (new URL(imageUrl).protocol !== 'https:') throw new Error();
-    } catch {
-      estadoEnvio.classList.remove('exito', 'procesando');
-      estadoEnvio.classList.add('error');
-      estadoEnvio.textContent = 'La imagen debe usar una URL HTTPS pública válida.';
-      return;
-    }
   }
   const htmlFinal = actualizarVistaPreviaCampana();
   envioCorreoEnCurso = true;

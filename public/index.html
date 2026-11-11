@@ -362,13 +362,9 @@
           </div>
           <label for="html-campana">Contenido HTML editable</label>
           <textarea id="html-campana" rows="14" spellcheck="false"></textarea>
-          <div class="campos-imagen-campana">
-            <label for="url-imagen-campana">URL HTTPS de imagen (opcional)<input id="url-imagen-campana" type="url" inputmode="url" placeholder="https://…"></label>
-            <label for="alt-imagen-campana">Texto alternativo<input id="alt-imagen-campana" type="text" placeholder="Descripción breve de la imagen"></label>
-          </div>
-          <p id="nota-imagen-campana" class="ayuda-carga">No se generó una imagen: la aplicación no tiene un servicio de imágenes conectado. Puedes añadir aquí una URL HTTPS pública; el HTML reserva un espacio visual para ella.</p>
           <label for="texto-campana">Versión de texto plano</label>
           <textarea id="texto-campana" rows="6"></textarea>
+          <button type="button" id="actualizar-desde-texto" class="boton-secundario">Actualizar correo con este texto</button>
           <div class="vista-previa-header"><h4>Vista previa</h4><button type="button" id="actualizar-previa" class="boton-secundario">Actualizar vista previa</button></div>
           <iframe id="vista-previa-campana" title="Vista previa del correo" sandbox="" referrerpolicy="no-referrer"></iframe>
           <p id="estado-envio" class="estado" role="status"></p>

@@ -1,7 +1,13 @@
 {
-  "titulo": "Estadisticas de impacto comercial - Drakion Tech",
-  "idioma": "es",
-  "instrucciones": {
+  "metadata": {
+    "titulo": "Estadísticas de impacto para correos - Drakion Tech",
+    "descripcion": "Datos reales sobre el costo de no automatizar, no digitalizar o no tener soporte, organizados por servicio.",
+    "fecha_elaboracion": "2026-10-23",
+    "idioma": "es",
+    "alcance_geografico": "Global (principalmente EE. UU., Europa y encuestas multinacionales). No son datos específicos de Colombia.",
+    "uso_recomendado": "Elegir una sola estadística por correo, citar fuente y año, y cerrar con una pregunta."
+  },
+   "instrucciones": {
     "objetivo": "Seleccionar una estadistica impactante y relevante para personalizar cada correo comercial.",
     "reglas": [
       "Utilizar preferiblemente una sola estadistica por correo.",
@@ -14,174 +20,470 @@
       "Si ninguna estadistica es relevante para el cliente, no forzar su inclusion."
     ]
   },
-  "estadisticas": [
+  "servicios": [
     {
-      "id": "1.1",
-      "servicio": ["desarrollo_software"],
-      "temas": ["procesos_manuales", "coordinacion", "productividad"],
-      "titulo": "Tiempo perdido en tareas de coordinacion",
-      "dato": "El 58 % de la jornada laboral se dedica a coordinar tareas, buscar informacion, cambiar entre aplicaciones y perseguir actualizaciones. Solo el 33 % se dedica al trabajo especializado y menos del 10 % a estrategia."
+      "servicio": "Desarrollo de software ágil y personalizado",
+      "estadisticas": [
+        {
+          "id": "1.1",
+          "titulo": "El 58 % de la jornada se va en trabajo sobre el trabajo",
+          "dato": "Los trabajadores del conocimiento dedican 58 % de su día a coordinar, buscar información, cambiar entre apps y perseguir actualizaciones. Solo 33 % va a trabajo especializado y menos de 10 % a estrategia.",
+          "cifra_clave": "58 %",
+          "fuente": "Asana, Anatomy of Work Index",
+          "anio": 2022,
+          "muestra": "10.624 trabajadores en 7 países",
+          "uso_cuando": "El cliente tiene procesos manuales, hojas de Excel, aprobaciones por correo o WhatsApp, o sistemas que no se hablan entre sí.",
+          "frase_email": "Según Asana, el 58 % del día laboral se va en coordinar el trabajo y no en hacerlo. ¿Cuánto de eso pasa hoy en su empresa?",
+          "aclaracion": "Ediciones anteriores del índice reportan 60 %.",
+          "url_fuente": "https://asana.com/es/press/releases/pr/asana-anatomy-of-work-index-2022-work-about-work-hampering-organizational-agility/19c41b48-602a-41cf-8af4-a3aeda2f05db"
+        },
+        {
+          "id": "1.2",
+          "titulo": "Horas perdidas por persona al año",
+          "dato": "El trabajador del conocimiento promedio pierde al año 103 horas en reuniones innecesarias, 209 horas en trabajo duplicado y 352 horas hablando sobre el trabajo.",
+          "cifra_clave": "209 horas/año en trabajo duplicado",
+          "fuente": "Asana, Anatomy of Work Index (encuesta global)",
+          "anio": null,
+          "uso_cuando": "Quieres traducir el problema a tiempo y dinero por empleado.",
+          "frase_email": "209 horas al año por persona en trabajo duplicado. En un equipo de 50, son más de 10.000 horas que un sistema a la medida podría devolverles.",
+          "aclaracion": "Cálculo de apoyo: 209 h x 50 personas = 10.450 horas.",
+          "url_fuente": "https://asana.com/resources/why-work-about-work-is-bad"
+        },
+        {
+          "id": "1.3",
+          "titulo": "Casi la mitad de las actividades laborales ya es automatizable",
+          "dato": "Con tecnología ya demostrada, el 45 % de las actividades por las que se paga a las personas podría automatizarse. Cerca del 60 % de las ocupaciones tiene al menos 30 % de sus actividades automatizables.",
+          "cifra_clave": "45 %",
+          "fuente": "McKinsey Global Institute, A Future That Works; McKinsey Quarterly",
+          "anio": 2017,
+          "muestra": "Más de 2.000 actividades en más de 800 ocupaciones",
+          "uso_cuando": "El cliente cree que automatizar es solo para empresas grandes o que su operación es demasiado particular.",
+          "frase_email": "McKinsey estima que el 45 % de las actividades laborales ya puede automatizarse con tecnología disponible hoy. Su competencia seguramente ya está revisando cuáles.",
+          "aclaracion": "Es potencial técnico, no una predicción de que vaya a ocurrir.",
+          "url_fuente": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/where-machines-could-replace-humans-and-where-they-cant-yet"
+        },
+        {
+          "id": "1.4",
+          "titulo": "Procesamiento y recolección de datos: lo más automatizable",
+          "dato": "El 69 % de las actividades de procesamiento de datos y el 64 % de las de recolección de datos tienen potencial técnico de automatización. Las actividades físicas predecibles llegan a 81 %.",
+          "cifra_clave": "69 % y 64 %",
+          "fuente": "McKinsey Global Institute, A Future That Works",
+          "anio": 2017,
+          "uso_cuando": "El cliente digita datos a mano, concilia reportes, pasa información de un sistema a otro o arma informes en Excel.",
+          "frase_email": "Casi 7 de cada 10 horas que su equipo dedica a procesar datos podrían ser automáticas.",
+          "aclaracion": "Es potencial técnico, no una predicción.",
+          "url_fuente": "https://www.mckinsey.com/~/media/mckinsey/industries/public%20and%20social%20sector/our%20insights/what%20the%20future%20of%20work%20will%20mean%20for%20jobs%20skills%20and%20wages/mgi%20jobs%20lost-jobs%20gained_report_december%202017.pdf"
+        },
+        {
+          "id": "1.5",
+          "titulo": "Potencial de automatización por sector",
+          "dato": "Manufactura: 59 % de las actividades. Alojamiento y servicios de comida: 73 %. Contadores, auditores y auxiliares de contabilidad en comercio: hasta 86 %. Vendedores de retail: 47 %.",
+          "cifra_clave": "59 % manufactura / 73 % alojamiento y comida / 86 % contabilidad",
+          "fuente": "McKinsey Quarterly, Where machines could replace humans - and where they can't (yet)",
+          "anio": 2017,
+          "uso_cuando": "Conoces el sector del cliente (manufactura, retail, servicios profesionales, etc.).",
+          "frase_email": null,
+          "aclaracion": "Es potencial técnico, no una predicción de que ocurra.",
+          "url_fuente": "https://www.mckinsey.com/~/media/mckinsey/industries/public%20and%20social%20sector/our%20insights/what%20the%20future%20of%20work%20will%20mean%20for%20jobs%20skills%20and%20wages/mgi%20jobs%20lost-jobs%20gained_report_december%202017.pdf"
+        }
+      ]
     },
     {
-      "id": "1.2",
-      "servicio": ["desarrollo_software", "soluciones_low_cost"],
-      "temas": ["trabajo_duplicado", "tiempo", "costos"],
-      "titulo": "Horas perdidas por empleado",
-      "dato": "Una persona puede dedicar al año 103 horas a reuniones innecesarias, 209 horas a trabajo duplicado y 352 horas a hablar sobre el trabajo."
+      "servicio": "Staff Augmentation",
+      "estadisticas": [
+        {
+          "id": "2.1",
+          "titulo": "La escasez de talento TI costará billones",
+          "dato": "IDC predice que para 2026 más del 90 % de las organizaciones del mundo sentirá la crisis de habilidades TI, con pérdidas de hasta US$5,5 billones (trillions) por retrasos de producto, menor competitividad y pérdida de negocio.",
+          "cifra_clave": "90 % y US$5,5 billones",
+          "fuente": "IDC, comunicado Enterprise Resilience: IT Skilling Strategies",
+          "anio": 2024,
+          "uso_cuando": "El cliente tiene proyectos de software estancados, vacantes TI sin cubrir o un equipo interno sobrecargado.",
+          "frase_email": "IDC proyectaba que en 2026 más del 90 % de las empresas sentiría la escasez de talento TI. Nuestro Staff Augmentation le permite sumar especialistas sin esperar meses de contratación.",
+          "aclaracion": "Es una proyección hecha en 2024 para 2026, no una medición. Preséntala como proyección.",
+          "url_fuente": "https://www.idc.com/resource-center/blog/skills-ai-and-the-enterprise-three-strategies-for-the-road-ahead/"
+        },
+        {
+          "id": "2.2",
+          "titulo": "Retrasos y problemas de calidad por falta de habilidades",
+          "dato": "La falta de habilidades TI ha causado retrasos en desarrollo de producto en el 54 % de las organizaciones y problemas de calidad en el 58 %. En Norteamérica, el 87 % de los líderes reportó retrasos en su transformación digital.",
+          "cifra_clave": "54 % retrasos / 58 % calidad",
+          "fuente": "IDC, reportado por CIO.com",
+          "anio": 2024,
+          "uso_cuando": "El cliente menciona proyectos que no arrancan o entregas que se retrasan.",
+          "frase_email": null,
+          "aclaracion": "El 87 % corresponde solo a líderes de TI de Norteamérica.",
+          "url_fuente": "https://www.cio.com/article/3805174/67-of-digital-transformations-delayed-due-to-skill-shortages.html"
+        }
+      ]
     },
     {
-      "id": "1.3",
-      "servicio": ["desarrollo_software", "soluciones_low_cost"],
-      "temas": ["automatizacion", "procesos", "productividad"],
-      "titulo": "Potencial de automatizacion",
-      "dato": "El 45 % de las actividades laborales tiene potencial tecnico de automatizacion con tecnologia disponible. Cerca del 60 % de las ocupaciones tiene al menos un 30 % de actividades automatizables."
+      "servicio": "Soluciones Low-Cost",
+      "angulo": "El costo de no hacer nada suele ser mayor que el de una solución sencilla y asequible. Combinar con datos de otras secciones.",
+      "estadisticas": [
+        {
+          "id": "3.1",
+          "titulo": "Pérdida por trabajo duplicado",
+          "dato": "209 horas por persona al año en trabajo duplicado.",
+          "cifra_clave": "209 horas/año",
+          "fuente": "Asana, Anatomy of Work Index",
+          "anio": null,
+          "uso_cuando": "El cliente duda de la inversión en una solución sencilla.",
+          "frase_email": "Una herramienta sencilla y de bajo costo que elimine el trabajo duplicado se paga sola: son 209 horas por empleado al año.",
+          "aclaracion": null,
+          "url_fuente": "https://asana.com/resources/why-work-about-work-is-bad"
+        },
+        {
+          "id": "3.2",
+          "titulo": "Los datos deficientes cuestan millones",
+          "dato": "La mala calidad de datos cuesta a las organizaciones en promedio US$12,9 millones al año.",
+          "cifra_clave": "US$12,9 millones/año",
+          "fuente": "Gartner",
+          "anio": 2020,
+          "uso_cuando": "El cliente tiene datos desordenados en hojas de cálculo o sistemas aislados.",
+          "frase_email": "Muchas veces el problema no es falta de presupuesto, sino datos desordenados. Una solución ligera de captura y validación puede evitar pérdidas mucho mayores.",
+          "aclaracion": "Viene de una encuesta de 154 organizaciones, clientes de proveedores de calidad de datos, con estimaciones propias. Úsalo como referencia, no como promedio exacto.",
+          "url_fuente": "https://resource.itbusinessplus.com/whitepapers/12252-IBM-CPL-Q1-AI-US-1.pdf"
+        },
+        {
+          "id": "3.3",
+          "titulo": "Aun las pymes sufren las caídas",
+          "dato": "El 57 % de las pequeñas empresas (20 a 100 empleados) reporta que una hora de caída cuesta hasta US$100.000. Solo el 1 % de las organizaciones estima que una hora cuesta menos de US$100.000, y son sobre todo negocios de 50 empleados o menos.",
+          "cifra_clave": "57 %",
+          "fuente": "ITIC, citado por Atlassian e INSC",
+          "anio": "2021 y 2024",
+          "uso_cuando": "El cliente es una pyme que cree que las caídas no le afectan tanto.",
+          "frase_email": "No necesita un presupuesto de multinacional para proteger su operación; sí necesita no depender de un solo sistema frágil.",
+          "aclaracion": "Son estimaciones de las propias empresas encuestadas.",
+          "url_fuente": "https://www.calyptix.com/wp-content/uploads/Hourly-Cost-of-Downtime-ITIC.pdf"
+        }
+      ]
     },
     {
-      "id": "1.4",
-      "servicio": ["desarrollo_software", "ia_ciencia_datos"],
-      "temas": ["procesamiento_datos", "digitacion", "reportes", "excel"],
-      "titulo": "Procesamiento de datos automatizable",
-      "dato": "Casi 7 de cada 10 actividades de procesamiento de datos y 64 de cada 100 actividades de recoleccion de datos tienen potencial tecnico de automatizacion."
+      "servicio": "Inteligencia Artificial y Ciencia de Datos",
+      "estadisticas": [
+        {
+          "id": "4.1",
+          "titulo": "La IA ya es la norma, no la excepción",
+          "dato": "El 88 % de las organizaciones usa IA de forma regular en al menos una función de negocio (78 % un año antes y 20 % en 2017).",
+          "cifra_clave": "88 %",
+          "fuente": "McKinsey, The State of AI in 2025",
+          "anio": 2025,
+          "muestra": "1.993 encuestados en 105 países",
+          "uso_cuando": "El cliente duda o dice que eso es para después.",
+          "frase_email": "El 88 % de las empresas ya usa IA en alguna parte de su operación. La pregunta ya no es si, sino cuándo y cómo.",
+          "aclaracion": "Cifra autorreportada por los encuestados.",
+          "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
+        },
+        {
+          "id": "4.2",
+          "titulo": "Datos deficientes: US$12,9 millones al año",
+          "dato": "La mala calidad de datos le cuesta a una organización en promedio US$12,9 millones al año. Gartner indica además que el 59 % de las organizaciones no mide la calidad de sus datos.",
+          "cifra_clave": "US$12,9 millones/año y 59 % no lo mide",
+          "fuente": "Gartner",
+          "anio": 2020,
+          "uso_cuando": "El cliente toma decisiones con reportes inconsistentes o duplicados.",
+          "frase_email": "Gartner estima que los datos deficientes cuestan en promedio US$12,9 millones al año. El 59 % de las empresas ni siquiera lo mide.",
+          "aclaracion": "Proviene de una encuesta de clientes de proveedores de calidad de datos (154 organizaciones); son estimaciones propias. Tratar como referencia.",
+          "url_fuente": "https://resource.itbusinessplus.com/whitepapers/12252-IBM-CPL-Q1-AI-US-1.pdf"
+        },
+        {
+          "id": "4.3",
+          "titulo": "Pérdidas superiores a 5 millones por datos",
+          "dato": "Más del 25 % de los profesionales de datos y analítica estiman pérdidas superiores a US$5 millones anuales por mala calidad de datos; el 7 % reporta US$25 millones o más.",
+          "cifra_clave": "25 % superior a US$5 millones",
+          "fuente": "Forrester, Data Culture and Literacy Survey",
+          "anio": 2023,
+          "uso_cuando": "Necesitas una segunda cifra que respalde la de Gartner.",
+          "frase_email": null,
+          "aclaracion": "Estimaciones de los propios encuestados.",
+          "url_fuente": "https://www.forrester.com/report/millions-lost-in-2023-due-to-poor-data-quality-potential-for-billions-to-be-lost-with-ai-without-intervention/RES181258"
+        },
+        {
+          "id": "4.4",
+          "titulo": "La IA y la automatización reducen el costo de una brecha",
+          "dato": "Las organizaciones que usan IA y automatización de forma extensiva en seguridad ahorraron en promedio US$1,9 millones por brecha y acortaron el ciclo de la brecha en unos 80 días.",
+          "cifra_clave": "US$1,9 millones y 80 días",
+          "fuente": "IBM, Cost of a Data Breach Report 2025",
+          "anio": 2025,
+          "muestra": "600 organizaciones",
+          "uso_cuando": "El cliente se preocupa por seguridad o dice que la IA es solo moda.",
+          "frase_email": "Las empresas que automatizan su seguridad detectan y contienen incidentes unos 80 días antes y ahorran, en promedio, US$1,9 millones por incidente.",
+          "aclaracion": "Son promedios de encuesta, no predicciones para una empresa en particular.",
+          "url_fuente": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications%2C-97-of-which-reported-lacking-proper-ai-access-controls"
+        },
+        {
+          "id": "4.5",
+          "titulo": "Mucha adopción, poco valor",
+          "dato": "Aunque el 88 % usa IA, solo el 39 % reporta algún impacto en utilidades a nivel de empresa y cerca del 6 % son de alto desempeño. La mayoría sigue en fase de piloto.",
+          "cifra_clave": "39 %",
+          "fuente": "McKinsey, The State of AI in 2025",
+          "anio": 2025,
+          "uso_cuando": "El cliente probó ChatGPT u otra herramienta pero no ve resultados.",
+          "frase_email": "Casi todos usan IA, pero solo 4 de cada 10 ven impacto en sus resultados. La diferencia está en rediseñar los procesos, no en comprar herramientas.",
+          "aclaracion": "Cifras autorreportadas.",
+          "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
+        }
+      ]
     },
     {
-      "id": "1.5",
-      "servicio": ["desarrollo_software"],
-      "temas": ["manufactura", "retail", "contabilidad", "restaurantes"],
-      "titulo": "Automatizacion segun el sector",
-      "dato": "El potencial tecnico de automatizacion alcanza el 59 % de las actividades en manufactura, el 73 % en alojamiento y servicios de comida, hasta el 86 % de ciertas tareas contables en comercio y el 47 % de las actividades de vendedores minoristas."
+      "servicio": "Asesoría en Apropiación Digital",
+      "estadisticas": [
+        {
+          "id": "5.1",
+          "titulo": "Herramientas de sobra, resultados de menos",
+          "dato": "El trabajador promedio usa 10 aplicaciones al día; cuantas más usa, más tiempo pasa distraído. Un 42 % dice dedicar más tiempo al correo y un 40 % a videollamadas que un año antes.",
+          "cifra_clave": "10 apps al día",
+          "fuente": "Asana, Anatomy of Work Index",
+          "anio": 2022,
+          "uso_cuando": "El cliente ya tiene software que su equipo no usa.",
+          "frase_email": "Comprar herramientas no es transformarse. Hoy el empleado promedio salta entre 10 aplicaciones al día.",
+          "aclaracion": null,
+          "url_fuente": "https://resources.asana.com/americas-anatomy-of-work-report-2022"
+        },
+        {
+          "id": "5.2",
+          "titulo": "La mayoría se estanca en el piloto",
+          "dato": "Aunque el 88 % usa IA, la mayoría de las organizaciones sigue en etapa de experimentación o piloto, y en ninguna función más del 10 % escala agentes de IA.",
+          "cifra_clave": "10 % máximo escalando agentes",
+          "fuente": "McKinsey, The State of AI in 2025",
+          "anio": 2025,
+          "uso_cuando": "El cliente comenzó proyectos de IA que nunca salieron de prueba.",
+          "frase_email": "El 88 % ya probó la IA; muy pocos la escalaron. La brecha es de apropiación, no de tecnología.",
+          "aclaracion": null,
+          "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
+        },
+        {
+          "id": "5.3",
+          "titulo": "Falta gobierno y capacitación sobre IA",
+          "dato": "El 63 % de las organizaciones carece de políticas de gobierno de IA para gestionar o evitar el uso no autorizado (IA en la sombra). La IA no autorizada elevó el costo de una brecha a US$4,63 millones.",
+          "cifra_clave": "63 %",
+          "fuente": "IBM, Cost of a Data Breach Report 2025",
+          "anio": 2025,
+          "uso_cuando": "Los empleados del cliente usan IA por su cuenta sin reglas.",
+          "frase_email": "El 63 % de las empresas no tiene políticas para el uso de IA. Sus empleados ya la usan; la pregunta es si lo hacen con reglas.",
+          "aclaracion": null,
+          "url_fuente": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications%2C-97-of-which-reported-lacking-proper-ai-access-controls"
+        },
+        {
+          "id": "5.4",
+          "titulo": "Sin claridad, el liderazgo también se dispersa",
+          "dato": "Los gerentes dedican 62 % de su tiempo a coordinación y la alta dirección 60 %. En empresas medianas y grandes el promedio es 59 %.",
+          "cifra_clave": "62 % gerentes / 60 % alta dirección",
+          "fuente": "Asana, Anatomy of Work Index",
+          "anio": 2022,
+          "uso_cuando": "Hablas con gerentes o directivos.",
+          "frase_email": null,
+          "aclaracion": null,
+          "url_fuente": "https://asana.com/es/press/releases/pr/asana-anatomy-of-work-index-2022-work-about-work-hampering-organizational-agility/19c41b48-602a-41cf-8af4-a3aeda2f05db"
+        }
+      ]
     },
     {
-      "id": "2.1",
-      "servicio": ["staff_augmentation"],
-      "temas": ["talento_ti", "contratacion", "retrasos_proyectos"],
-      "titulo": "Escasez de talento tecnologico",
-      "dato": "Se proyecto que mas del 90 % de las organizaciones del mundo sentiria el impacto de la escasez de habilidades tecnologicas, con perdidas potenciales de hasta US$5,5 billones."
+      "servicio": "Soporte gestionado 24/7 y alta confiabilidad",
+      "estadisticas": [
+        {
+          "id": "6.1",
+          "titulo": "Una hora caída cuesta más de US$300.000",
+          "dato": "Para más del 90 % de las empresas medianas y grandes, una hora de caída cuesta más de US$300.000, y el 41 % reporta entre US$1 millón y más de US$5 millones por hora, sin incluir multas ni litigios.",
+          "cifra_clave": "US$300.000 por hora",
+          "fuente": "ITIC, Hourly Cost of Downtime Survey",
+          "anio": 2024,
+          "muestra": "Más de 1.000 empresas (nov. 2023 - mar. 2024)",
+          "uso_cuando": "El cliente depende de su plataforma, ecommerce, sistema interno o cadena operativa.",
+          "frase_email": "Para más del 90 % de las empresas medianas y grandes, una sola hora de caída cuesta más de US$300.000. ¿Quién responde hoy a las 2 a. m. si su sistema falla?",
+          "aclaracion": "Estimaciones autorreportadas por las empresas, no un promedio observado.",
+          "url_fuente": "https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report/"
+        },
+        {
+          "id": "6.2",
+          "titulo": "Cada minuto cuenta",
+          "dato": "Con un costo de US$300.000 por hora, un minuto de caída de un servidor cuesta unos US$5.000 (US$4.998). Con US$1 millón por hora, US$16.700 por minuto.",
+          "cifra_clave": "US$4.998 por minuto",
+          "fuente": "ITIC, 2021 Hourly Cost of Downtime Survey (vía TechChannel)",
+          "anio": 2021,
+          "uso_cuando": "Quieres dar sensación de urgencia con un número concreto.",
+          "frase_email": "Cada minuto sin servicio puede costar miles de dólares.",
+          "aclaracion": "Es un cálculo a partir de la tarifa por hora.",
+          "url_fuente": "https://itic-corp.com/itic-reports-surveys/"
+        },
+        {
+          "id": "6.3",
+          "titulo": "Más de la mitad de las caídas graves superan US$100.000",
+          "dato": "El 54 % de las interrupciones significativas cuesta más de US$100.000 y son cada vez más caras.",
+          "cifra_clave": "54 %",
+          "fuente": "Uptime Institute, análisis de interrupciones",
+          "anio": 2024,
+          "uso_cuando": "El cliente cree que las caídas graves son raras o baratas.",
+          "frase_email": null,
+          "aclaracion": null,
+          "url_fuente": "https://intelligence.uptimeinstitute.com/index.php/resource/annual-outage-analysis-2024"
+        },
+        {
+          "id": "6.4",
+          "titulo": "No saben cuánto pierden",
+          "dato": "6 de cada 10 empresas no pueden calcular el costo por hora de una caída.",
+          "cifra_clave": "6 de cada 10",
+          "fuente": "ITIC, Hourly Cost of Downtime Survey",
+          "anio": 2024,
+          "uso_cuando": "Quieres abrir con una pregunta que haga reflexionar.",
+          "frase_email": "Seis de cada diez empresas no saben cuánto les cuesta una caída. ¿Usted sí lo sabe?",
+          "aclaracion": null,
+          "url_fuente": "https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report/"
+        },
+        {
+          "id": "6.5",
+          "titulo": "Costo de una brecha de seguridad",
+          "dato": "El costo promedio global de una brecha de datos es US$4,44 millones (en EE. UU., US$10,22 millones). Con ciclos de más de 200 días el costo sube a US$5,01 millones frente a US$3,87 millones de las resueltas más rápido.",
+          "cifra_clave": "US$4,44 millones",
+          "fuente": "IBM, Cost of a Data Breach Report 2025",
+          "anio": 2025,
+          "muestra": "600 organizaciones",
+          "uso_cuando": "El cliente maneja datos de clientes o información sensible.",
+          "frase_email": "Una brecha cuesta en promedio US$4,44 millones; tardar en contenerla la encarece. Un equipo de soporte 24/7 acorta ese tiempo.",
+          "aclaracion": "Promedio de encuesta global, no una predicción para una empresa en particular.",
+          "url_fuente": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications%2C-97-of-which-reported-lacking-proper-ai-access-controls"
+        }
+      ]
+    }
+  ],
+  "estadisticas_generales": [
+    {
+      "cifra": "58 %",
+      "dato": "del día laboral se pierde en coordinar el trabajo",
+      "fuente": "Asana 2022",
+      "url_fuente": "https://asana.com/es/press/releases/pr/asana-anatomy-of-work-index-2022-work-about-work-hampering-organizational-agility/19c41b48-602a-41cf-8af4-a3aeda2f05db"
     },
     {
-      "id": "2.2",
-      "servicio": ["staff_augmentation"],
-      "temas": ["talento_ti", "retrasos", "calidad"],
-      "titulo": "Proyectos afectados por falta de talento",
-      "dato": "El 54 % de las organizaciones reporto retrasos en el desarrollo de productos por falta de habilidades y el 58 % reporto problemas de calidad. En Norteamerica, el 87 % de los lideres reporto retrasos en su transformacion digital."
+      "cifra": "45 %",
+      "dato": "de las actividades laborales es automatizable con tecnología actual",
+      "fuente": "McKinsey",
+      "url_fuente": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/where-machines-could-replace-humans-and-where-they-cant-yet"
     },
     {
-      "id": "3.1",
-      "servicio": ["soluciones_low_cost"],
-      "temas": ["trabajo_duplicado", "costos", "productividad"],
-      "titulo": "Costo oculto del trabajo duplicado",
-      "dato": "209 horas al año por persona pueden destinarse a trabajo duplicado, tiempo que representa capacidad operativa que podria aprovecharse mejor."
+      "cifra": "88 %",
+      "dato": "de las organizaciones ya usa IA en al menos una función",
+      "fuente": "McKinsey 2025",
+      "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
     },
     {
-      "id": "3.2",
-      "servicio": ["soluciones_low_cost", "ia_ciencia_datos"],
-      "temas": ["calidad_datos", "datos_desordenados", "costos"],
-      "titulo": "Costo de la mala calidad de datos",
-      "dato": "La mala calidad de datos se ha estimado en un costo promedio de US$12,9 millones anuales por organizacion."
+      "cifra": "US$12,9 millones",
+      "dato": "al año cuesta la mala calidad de datos",
+      "fuente": "Gartner",
+      "url_fuente": "https://resource.itbusinessplus.com/whitepapers/12252-IBM-CPL-Q1-AI-US-1.pdf"
     },
     {
-      "id": "3.3",
-      "servicio": ["soluciones_low_cost", "soporte_24_7"],
-      "temas": ["caidas", "continuidad_operativa", "pymes"],
-      "titulo": "Costo de las interrupciones",
-      "dato": "El 57 % de las pequeñas empresas de entre 20 y 100 empleados reporto que una hora de caida podia costar hasta US$100.000."
+      "cifra": "US$300.000",
+      "dato": "por hora cuesta una caída para más del 90 % de empresas medianas y grandes",
+      "fuente": "ITIC 2024",
+      "url_fuente": "https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report/"
     },
     {
-      "id": "4.1",
-      "servicio": ["ia_ciencia_datos", "apropiacion_digital"],
-      "temas": ["adopcion_ia", "transformacion_digital", "competitividad"],
-      "titulo": "Adopcion de inteligencia artificial",
-      "dato": "El 88 % de las organizaciones utiliza inteligencia artificial regularmente en al menos una funcion del negocio, frente al 78 % del periodo anterior y el 20 % registrado en 2017."
+      "cifra": "US$1,9 millones",
+      "dato": "ahorrados por brecha con IA y automatización de seguridad",
+      "fuente": "IBM 2025",
+      "url_fuente": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications%2C-97-of-which-reported-lacking-proper-ai-access-controls"
     },
     {
-      "id": "4.2",
-      "servicio": ["ia_ciencia_datos"],
-      "temas": ["calidad_datos", "gobernanza_datos", "analitica"],
-      "titulo": "Datos de baja calidad",
-      "dato": "La mala calidad de datos puede representar un costo promedio de US$12,9 millones anuales por organizacion. Ademas, el 59 % de las organizaciones no mide la calidad de sus datos."
+      "cifra": "90 %",
+      "dato": "de las organizaciones sentirá la escasez de talento TI en 2026, con pérdidas proyectadas de US$5,5 billones",
+      "fuente": "IDC (proyección 2024)",
+      "url_fuente": "https://www.idc.com/resource-center/blog/skills-ai-and-the-enterprise-three-strategies-for-the-road-ahead/"
+    }
+  ],
+  "notas_uso_responsable": [
+    "Cita siempre la fuente y el año dentro del correo (ej.: según McKinsey, 2025).",
+    "Las cifras son globales, no de Colombia. No las presentes como datos locales; datos de DANE, MinTIC o Confecámaras son más persuasivos para clientes colombianos.",
+    "Muchas son encuestas autorreportadas o estimaciones (ITIC, Gartner, Asana). Usa verbos como estima, según o reporta, no garantiza o sucederá.",
+    "McKinsey habla de potencial técnico de automatización, no de que vaya a ocurrir ni de despidos.",
+    "Los datos de ITIC sobre caídas se refieren a empresas medianas y grandes; para pymes pequeñas usa el 57 % hasta US$100.000 por hora, con prudencia.",
+    "El dato de IDC es una proyección hecha en 2024 para 2026, no una medición.",
+    "No redondees a tu favor: no digas 60 % si la cifra es 58 %.",
+    "Las cifras se actualizan cada año; revisa si hay una edición más reciente antes de campañas grandes.",
+    "Una sola cifra bien elegida y conectada con el problema del cliente funciona mejor que varias juntas."
+  ],
+  "plantillas_correo": [
+    {
+      "servicio": "Desarrollo / automatización",
+      "asunto": "209 horas por empleado al año, ¿las está perdiendo [Empresa]?",
+      "cuerpo": "Hola [Nombre], según Asana, un empleado pierde en promedio 209 horas al año en trabajo duplicado. En un equipo como el suyo eso equivale a semanas completas de capacidad. En Drakion Tech desarrollamos software ágil y a la medida para eliminar esos procesos manuales...",
+      "url_fuente": "https://asana.com/resources/why-work-about-work-is-bad"
     },
     {
-      "id": "4.3",
-      "servicio": ["ia_ciencia_datos"],
-      "temas": ["calidad_datos", "analitica", "costos"],
-      "titulo": "Perdidas asociadas a datos deficientes",
-      "dato": "Mas del 25 % de los profesionales de datos y analitica estima perdidas superiores a US$5 millones anuales por mala calidad de datos, y el 7 % reporta perdidas de US$25 millones o mas."
+      "servicio": "Staff Augmentation",
+      "asunto": "¿Cuánto cuesta un proyecto TI detenido?",
+      "cuerpo": "Hola [Nombre], IDC proyectó que en 2026 más del 90 % de las organizaciones sentiría el impacto de la escasez de talento TI. Con Staff Augmentation sumamos desarrolladores a su equipo sin los meses de un proceso de contratación...",
+      "url_fuente": "https://www.idc.com/resource-center/blog/skills-ai-and-the-enterprise-three-strategies-for-the-road-ahead/"
     },
     {
-      "id": "4.4",
-      "servicio": ["ia_ciencia_datos", "soporte_24_7"],
-      "temas": ["ciberseguridad", "automatizacion_seguridad", "brechas_datos"],
-      "titulo": "IA aplicada a la seguridad",
-      "dato": "Las organizaciones que utilizan ampliamente IA y automatizacion en seguridad registraron un ahorro promedio de US$1,9 millones por brecha de datos y redujeron su ciclo de gestion de brechas en aproximadamente 80 dias."
+      "servicio": "Inteligencia Artificial y Ciencia de Datos",
+      "asunto": "El 88 % ya usa IA. ¿Y [Empresa]?",
+      "cuerpo": "Hola [Nombre], según McKinsey (2025), el 88 % de las organizaciones ya usa IA en alguna función, pero solo 4 de cada 10 ven impacto en sus resultados. Ayudamos a pasar del experimento al resultado...",
+      "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
     },
     {
-      "id": "4.5",
-      "servicio": ["ia_ciencia_datos", "apropiacion_digital"],
-      "temas": ["adopcion_ia", "retorno_inversion", "resultados"],
-      "titulo": "Adoptar IA no garantiza resultados",
-      "dato": "Aunque el 88 % de las organizaciones utiliza IA, solo el 39 % reporta algun impacto en las utilidades a nivel empresarial y cerca del 6 % se considera de alto desempeño."
+      "servicio": "Soporte gestionado 24/7",
+      "asunto": "¿Quién atiende su sistema a las 2 a. m.?",
+      "cuerpo": "Hola [Nombre], para más del 90 % de las empresas medianas y grandes una hora de caída cuesta más de US$300.000 (ITIC, 2024). Nuestro soporte gestionado 24/7 mantiene su operación disponible...",
+      "url_fuente": "https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report/"
     },
     {
-      "id": "5.1",
-      "servicio": ["apropiacion_digital"],
-      "temas": ["adopcion_software", "aplicaciones", "productividad"],
-      "titulo": "Exceso de herramientas digitales",
-      "dato": "El trabajador promedio utiliza 10 aplicaciones al dia. El 42 % afirma dedicar mas tiempo al correo electronico y el 40 % a las videollamadas que el año anterior."
+      "servicio": "Asesoría en Apropiación Digital",
+      "asunto": "Comprar herramientas no es transformarse",
+      "cuerpo": "Hola [Nombre], el 88 % de las empresas ya usa IA, pero la mayoría sigue en piloto (McKinsey, 2025). La diferencia está en la apropiación: que su equipo realmente use la tecnología...",
+      "url_fuente": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
     },
     {
-      "id": "5.2",
-      "servicio": ["apropiacion_digital", "ia_ciencia_datos"],
-      "temas": ["pilotos_ia", "escalamiento", "adopcion"],
-      "titulo": "El reto de llevar la IA a la operacion",
-      "dato": "Aunque el 88 % de las organizaciones utiliza IA, la mayoria continua en etapas de experimentacion o prueba y ninguna funcion supera el 10 % de adopcion de agentes de IA a escala."
+      "servicio": "Soluciones Low-Cost",
+      "asunto": "Digitalizar no tiene que ser caro",
+      "cuerpo": "Hola [Nombre], el trabajo duplicado cuesta 209 horas por empleado al año (Asana). Una solución sencilla y asequible puede eliminarlo sin un gran proyecto...",
+      "url_fuente": "https://asana.com/resources/why-work-about-work-is-bad"
+    }
+  ],
+  "fuentes": [
+    {
+      "nombre": "McKinsey Global Institute, A Future That Works (enero 2017)",
+      "url": "https://www.mckinsey.com/~/media/mckinsey/industries/public%20and%20social%20sector/our%20insights/what%20the%20future%20of%20work%20will%20mean%20for%20jobs%20skills%20and%20wages/mgi%20jobs%20lost-jobs%20gained_report_december%202017.pdf"
     },
     {
-      "id": "5.3",
-      "servicio": ["apropiacion_digital", "ia_ciencia_datos"],
-      "temas": ["gobernanza_ia", "seguridad", "uso_no_autorizado"],
-      "titulo": "Riesgos del uso de IA sin controles",
-      "dato": "El 63 % de las organizaciones carece de politicas de gobierno de IA para gestionar o evitar el uso no autorizado. Las brechas relacionadas con IA no autorizada registraron un costo de US$4,63 millones."
+      "nombre": "McKinsey Quarterly, Where machines could replace humans - and where they can't (yet)",
+      "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/where-machines-could-replace-humans-and-where-they-cant-yet"
     },
     {
-      "id": "5.4",
-      "servicio": ["apropiacion_digital", "desarrollo_software"],
-      "temas": ["coordinacion", "liderazgo", "productividad"],
-      "titulo": "Tiempo de gerencia dedicado a coordinar",
-      "dato": "Los gerentes dedican el 62 % de su tiempo a coordinacion y tareas relacionadas con el trabajo; en la alta direccion, la cifra es del 60 %."
+      "nombre": "McKinsey Quarterly, Four fundamentals of workplace automation",
+      "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/where-machines-could-replace-humans-and-where-they-cant-yet"
     },
     {
-      "id": "6.1",
-      "servicio": ["soporte_24_7"],
-      "temas": ["caidas", "continuidad_operativa", "disponibilidad"],
-      "titulo": "Costo de una hora de caida",
-      "dato": "Mas del 90 % de las empresas medianas y grandes estima que una hora de caida cuesta mas de US$300.000. El 41 % reporta costos de entre US$1 millon y mas de US$5 millones por hora."
+      "nombre": "McKinsey, The State of AI in 2025: Agents, innovation, and transformation (5 nov. 2025)",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025"
     },
     {
-      "id": "6.2",
-      "servicio": ["soporte_24_7"],
-      "temas": ["caidas", "costos", "disponibilidad"],
-      "titulo": "Costo por minuto de interrupcion",
-      "dato": "Una interrupcion que cuesta US$300.000 por hora equivale aproximadamente a US$5.000 por minuto. Si cuesta US$1 millon por hora, equivale a unos US$16.700 por minuto."
+      "nombre": "Asana, Anatomy of Work Index 2021 y 2022",
+      "url": "https://asana.com/es/press/releases/pr/asana-anatomy-of-work-index-2022-work-about-work-hampering-organizational-agility/19c41b48-602a-41cf-8af4-a3aeda2f05db"
     },
     {
-      "id": "6.3",
-      "servicio": ["soporte_24_7"],
-      "temas": ["caidas", "continuidad_operativa", "riesgo"],
-      "titulo": "Impacto economico de interrupciones",
-      "dato": "El 54 % de las interrupciones significativas analizadas tuvo un costo superior a US$100.000."
+      "nombre": "ITIC, Hourly Cost of Downtime Survey 2021 y 2024",
+      "url": "https://itic-corp.com/itic-2024-hourly-cost-of-downtime-report/"
     },
     {
-      "id": "6.4",
-      "servicio": ["soporte_24_7"],
-      "temas": ["continuidad_operativa", "costos", "gestion_riesgo"],
-      "titulo": "Empresas que desconocen el costo de una caida",
-      "dato": "Aproximadamente 6 de cada 10 empresas no pueden calcular cuanto les cuesta una hora de interrupcion."
+      "nombre": "Uptime Institute, análisis de interrupciones 2024",
+      "url": "https://intelligence.uptimeinstitute.com/index.php/resource/annual-outage-analysis-2024"
     },
     {
-      "id": "6.5",
-      "servicio": ["soporte_24_7", "ia_ciencia_datos"],
-      "temas": ["ciberseguridad", "brechas_datos", "respuesta_incidentes"],
-      "titulo": "Costo de una brecha de datos",
-      "dato": "El costo promedio global de una brecha de datos se estima en US$4,44 millones. En Estados Unidos alcanza US$10,22 millones. Las brechas que tardan mas de 200 dias en resolverse tienen un costo promedio de US$5,01 millones, frente a US$3,87 millones para las resueltas mas rapido."
+      "nombre": "IBM, Cost of a Data Breach Report 2025 (30 jul. 2025)",
+      "url": "https://newsroom.ibm.com/2025-07-30-ibm-report-13-of-organizations-reported-breaches-of-ai-models-or-applications%2C-97-of-which-reported-lacking-proper-ai-access-controls"
+    },
+    {
+      "nombre": "Gartner, calidad de datos (encuesta 2020; informe jul. 2024)",
+      "url": "https://resource.itbusinessplus.com/whitepapers/12252-IBM-CPL-Q1-AI-US-1.pdf"
+    },
+    {
+      "nombre": "Forrester, Data Culture and Literacy Survey 2023",
+      "url": "https://www.forrester.com/report/millions-lost-in-2023-due-to-poor-data-quality-potential-for-billions-to-be-lost-with-ai-without-intervention/RES181258"
+    },
+    {
+      "nombre": "IDC, IT Skills Shortage (comunicado 14 may. 2024) y reporte de CIO.com",
+      "url": "https://www.idc.com/resource-center/blog/skills-ai-and-the-enterprise-three-strategies-for-the-road-ahead/"
     }
   ]
 }
